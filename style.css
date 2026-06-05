@@ -1,0 +1,91 @@
+.maintitle{
+    font-size: 30px;
+    background-color: rgb(75, 74, 63);
+    margin: 0%;
+}
+body {
+  --sq: 20vmin; /* square size */
+  --lt: calc(var(--sq) / 20); /* line thickness */
+  --c1: black; /* background color */
+  --c2: rgb(75, 74, 63);  /* line color */
+  --c3: black; /* dot inner color */
+  --c4: grey; /* dot outer color */
+  
+  --line-grad: 
+      var(--c2) 0 calc(  0% + var(--lt) / 2), #0000 0 calc( 50% - var(--lt) / 2),
+      var(--c2) 0 calc( 50% + var(--lt) / 2), #0000 0 calc(100% - var(--lt) / 2),
+      var(--c2) 0 ;
+  
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background:
+    50% 50% / calc(var(--sq) * 2) calc(var(--sq) * 2) radial-gradient(
+      var(--c3) calc(var(--lt) * .9), var(--c4) 0 calc(var(--lt) * 1.1), #0000 0
+    ),
+    50% 50% / var(--sq) var(--sq) linear-gradient(  0deg, var(--line-grad)),
+    50% 50% / var(--sq) var(--sq) linear-gradient( 90deg, var(--line-grad)),
+    50% 50% / var(--sq) var(--sq) linear-gradient( 45deg, var(--line-grad)),
+    50% 50% / var(--sq) var(--sq) linear-gradient(-45deg, var(--line-grad)),
+    var(--c1)
+}
+input{
+    width: 50%;
+    height: 50px;
+    color: darkblue;
+    padding:10px;
+    margin: 10px;
+    font-size: 25px;
+    font-style:italic;
+    background-color: grey;
+}
+button{
+    height: 40px;
+    color: grey;
+    background-color: black;
+}
+/* 1. Control the box container size */
+.bot-logo {
+    width: 150px;          /* Change this number to make it bigger or smaller */
+    height: 150px;         /* Keep width and height equal for a perfect square/circle */
+    margin: 0 0 20px 0;    /* Adds 20px of space underneath the image */
+    padding: 0;            /* Resets default browser margins on figure tags */
+    border-radius: 50%;    /* Turns the square box into a smooth circle */
+    overflow: hidden;      /* Crops the sharp corners of the image inside the circle */
+    border: 3px solid rgb(75, 74, 63); /* Optional: Adds a matching border */
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+}
+
+/* 2. Force the actual image to fill that box perfectly */
+.bot-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* Scales and clips the image so it doesn't look stretched */
+}
+#replyBox {
+    margin-top: 25px;
+    padding: 20px;
+    width: 50%;                 /* Matches the exact width of your input box */
+    min-height: 60px;           /* Gives it a base height even when empty */
+    background-color: rgb(75, 74, 63); /* Matches your title's background color */
+    color: beige;               /* Makes the AI text pop out beautifully */
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    border-radius: 8px;         /* Gives it clean, slightly rounded corners */
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.6); /* Makes it look layered over the grid */
+    border: 1px solid beige;    /* Thin accent border to tie it together */
+    max-height: 300px;
+    overflow-y: auto;
+    
+}
+.responding::before{
+    transform: scale(1.05);
+    color: lightpink;
+    transition: all 0.2s ease;
+    content: "The expert is pouring a glass... 🍷";
+    font-style: italic;
+}
