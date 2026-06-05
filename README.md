@@ -2,6 +2,9 @@
 
 A full-stack, decoupled local AI application that connects a native browser interface to a self-hosted neural network. The system delivers responsive, highly opinionated, and playful wine advice using a localized inference pipeline.
 
+<img width="1919" height="925" alt="image" src="https://github.com/user-attachments/assets/6b6e442e-790d-4392-bc71-783518bdb672" />
+
+
 ## Engineering Highlight: Zero-Framework, Zero-Dependency Implementation
 
 Every single line of this project—across the entire stack—was written by hand.
