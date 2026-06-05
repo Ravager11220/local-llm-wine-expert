@@ -1,9 +1,7 @@
 # Local LLM Wine Expert
 
 A full-stack, decoupled local AI application that connects a native browser interface to a self-hosted neural network. The system delivers responsive, highly opinionated, and playful wine advice using a localized inference pipeline.
-
-<img width="1919" height="925" alt="image" src="https://github.com/user-attachments/assets/6b6e442e-790d-4392-bc71-783518bdb672" />
-
+<img width="1919" height="925" alt="image" src="https://github.com/user-attachments/assets/a9bb7067-3ba8-4fb9-86e7-2c720d401773" />
 
 ## Engineering Highlight: Zero-Framework, Zero-Dependency Implementation
 
