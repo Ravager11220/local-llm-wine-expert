@@ -1,78 +1,87 @@
-Local LLM Wine Expert
+# Local LLM Wine Expert
 
-A full-stack, decoupled local AI application that connects a browser interface to a local neural network. The system delivers enthusiastic, highly opinionated, and playful wine advice using a self-hosted pipeline.
-Technical Architecture & Concepts Mastered
+A full-stack, decoupled local AI application that connects a native browser interface to a self-hosted neural network. The system delivers responsive, highly opinionated, and playful wine advice using a localized inference pipeline.
 
-Transitioning from writing standard algorithmic scripts in C++ to managing an asynchronous, multi-layered web architecture required breaking down and mastering several fundamental core engineering concepts:
-1. Data Serialization and Transport Contracts
+## Engineering Highlight: Zero-Framework, Zero-Dependency Implementation
 
-JavaScript and Python run in completely separate process memories. Because they cannot natively share objects, data must be translated into a universal network text string format (JSON).
+Every single line of this project—across the entire stack—was written by hand.
 
-    Frontend: Captured user raw input from the DOM and used JSON.stringify({message: userPrompt}) to flatten the active memory object into a transportable text string payload.
+* **Frontend:** Built entirely using native HTML5, vanilla CSS3, and raw JavaScript without reliance on React, Tailwind, or external UI libraries. This ensures an exceptionally lightweight footprint with zero third-party client dependencies.
+* **Backend:** Built directly on top of the native Python ASGI ecosystem using FastAPI and Uvicorn to manage asynchronous execution and data streaming.
 
-    Backend: Leveraged Pydantic (BaseModel) to intercept the raw string payload and enforce a strict type contract, verifying the structural keys before mapping them into native Python data attributes.
+---
 
-2. Cross-Origin Resource Sharing (CORS) Mitigation
+## Technical Architecture & Core Concepts Mastered
 
-Browsers implement strict security policies to prevent scripts on one port from reading data from another. Since the frontend runs locally via the file system/client port and the backend runs on port 8000, explicit communication permissions were required. This was resolved by injecting CORSMiddleware into the FastAPI application stack to append the necessary security access headers to outgoing HTTP responses.
-3. Asynchronous Execution Timelines
+Transitioning from standard algorithmic C++ development to an asynchronous, multi-layered web architecture required mastering several core systems-level engineering concepts:
 
-Network I/O operations are unpredictable and take time. Standard synchronous code would freeze or evaluate immediately as undefined.
+### 1. Data Serialization and Transport Contracts
 
-    Implemented the async/await paradigm in JavaScript to halt execution on the network thread until the TCP socket returned data.
+Because JavaScript (browser client) and Python (server) run in isolated process memories and cannot share native objects, data is translated into a universal string format (JSON).
 
-    Used this non-blocking suspension point to cleanly manipulate DOM class lists (replybox.classList.add('responding')), updating the application layout state smoothly while waiting for the LLM inference generation to complete.
+* **Client Side:** Captures raw input from the DOM and utilizes `JSON.stringify()` to flatten active memory objects into transportable network payloads.
+* **Server Side:** Leverages Pydantic data models to intercept incoming payloads, enforcing a strict type contract to validate structural keys before mapping them into native Python attributes.
 
-System Requirements
+### 2. Cross-Origin Resource Sharing (CORS) Mitigation
 
-    Ollama API: Core background engine handling model weights and localized inference execution.
+Browsers restrict scripts running on a local file system or a client-side origin from reading data from a distinct port. To allow communication with the backend on port 8000, explicit permissions were handled by injecting CORS middleware directly into the FastAPI application stack, appending the necessary access-control headers to outgoing HTTP responses.
 
-    Python 3.10+: Runtime environment for the FastAPI backend gateway.
+### 3. Asynchronous Execution Timelines
 
-    Modern Web Browser: Handles layout compilation, DOM rendering, and client-side network scripts.
+Network I/O operations and model inference are inherently unpredictable. To prevent the single-threaded browser interface from freezing during computation, the system implements the `async/await` paradigm in JavaScript. This halts execution on the network thread until the TCP socket returns data, while cleanly manipulating DOM class lists to update the visual interface state dynamically.
 
-Installation & Deployment Execution Flow
+---
+
+## System Requirements
+
+* **Ollama API:** Core local engine handling model weights and localized inference execution.
+* **Python 3.10+:** Runtime environment for the FastAPI backend gateway.
+* **Modern Web Browser:** Handles layout compilation, DOM rendering, and client-side network scripts.
+
+---
+
+## Installation & Deployment
 
 To execute the application locally, start the independent system layers in structural sequence:
-1. Backend Gateway Activation
 
-Navigate to the root directory of your project, initialize your virtual environment, install the compiled dependency footprint, and run the ASGI server application wrapper:
-Setup virtual environment and dependencies
+### 1. Backend Gateway Activation
 
+Navigate to the root directory, initialize a virtual environment, install the dependencies, and run the ASGI server:
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-Start the network listener
-
 uvicorn main:app --reload
-Breakdown of the Uvicorn Command Execution:
 
-    uvicorn: The ASGI web server process that binds the Python runtime engine to the network socket layer.
+```
 
-    main: Directs the runner process to locate the exact source file named main.py.
+* **`uvicorn main:app`**: Binds the Python runtime engine to the network socket layer, directing the runner process to locate the `app` instance inside `main.py`.
+* **`--reload`**: Configures hot-reloading to instantly re-map memory whenever backend files are modified.
 
-    :app: Specifies the variable name holding the instantiated FastAPI() application object within that file.
+### 2. Frontend Client Launch
 
-    --reload: Configures hot-reloading development monitoring, causing the server process to instantly recycle and re-map memory whenever files are updated.
+Launch `index.html` within any modern web browser. The native client script automatically points to the local server endpoint at `http://localhost:8000/api/chat`.
 
-2. Frontend Client Launch
+---
 
-Open your system's file manager and launch index.html within your web browser. The client script will automatically target the designated local server endpoint http://localhost:8000/api/chat.
-Repository Structure
+## Repository Structure
 
+```
 local-llm-wine-expert/
-├── .gitignore          # Prevents environment tracking pollution (.venv/, pycache/)
-├── LICENSE             # MIT Permissive open-source distribution contract
 ├── requirements.txt    # Frozen Python module version blueprints
 ├── index.html          # Static structural DOM document node layout
-├── style.css           # Modular presentation layer and pseudo-element animations
+├── style.css           # Custom presentation layer and layout animations
 ├── app.js              # Event-driven asynchronous network pipeline script
-├── main.py             # FastAPI backend routing and middleware gateway configuration
-├── models.py           # Pydantic data modeling structural validations
+├── main.py             # FastAPI backend routing and middleware configuration
+├── models.py           # Pydantic data modeling and structural validation
 ├── aiengine.py         # Ollama Python client abstraction and binding handlers
 └── prompts.py          # Isolated system prompt role configuration matrices
-and now commiting the README.md
 
-License
+```
 
-This project is open-source software licensed under the MIT License. You are free to copy, modify, distribute, or sub-license the source files provided you include the original copyright notice and liability disclaimer.
+---
+
+## License
+
+This project is licensed under the MIT License.
