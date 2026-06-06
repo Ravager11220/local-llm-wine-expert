@@ -64,7 +64,6 @@ uvicorn main:app --reload
 
 Launch `index.html` within any modern web browser. The native client script automatically points to the local server endpoint at `http://localhost:8000/api/chat`.
 
----
 
 ### 3. Ollama Daemon Launch
 
@@ -73,6 +72,8 @@ then install llama3.2 (3b): ```ollama run llama3.2``` (This will first download 
 up a text chat in the terminal, which you can exit with /bye, as we just need the daemon running)
 confirm ollama status ```sudo systemctl status ollama```
 on linux (debian/ubuntu based system) ofc lmao 
+
+---
 
 ## Repository Structure
 
