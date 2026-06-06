@@ -67,11 +67,10 @@ Launch `index.html` within any modern web browser. The native client script auto
 
 ### 3. Ollama Daemon Launch
 
-first, get ollama with ```curl -fsSL https://ollama.com/install.sh | sh```
-then install llama3.2 (3b): ```ollama run llama3.2``` (This will first download the model(2GB) then open 
-up a text chat in the terminal, which you can exit with /bye, as we just need the daemon running)
-confirm ollama status ```sudo systemctl status ollama```
-on linux (debian/ubuntu based system) ofc lmao 
+* first, get **Ollama** with ```curl -fsSL https://ollama.com/install.sh | sh```
+* then install **llama3.2 (3b)**: ```ollama run llama3.2``` (This will first download the model(2GB) then open up a text chat in the terminal, which you can exit with /bye, as we just need the daemon running)
+* Confirm **Ollama status** ```sudo systemctl status ollama```
+on **linux (debian/ubuntu based system)** ofc lmao 
 
 ---
 
