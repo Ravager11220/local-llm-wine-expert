@@ -1,4 +1,4 @@
-### deployed: https://local-llm-wine-expert-git-host-online-ravager11220s-projects.vercel.app/
+### deployed: https://local-llm-wine-expert.vercel.app/
 # Local LLM Wine Expert
 
 A full-stack, decoupled local AI application that connects a native browser interface to a self-hosted neural network. The system delivers responsive, highly opinionated, and playful wine advice using a localized inference pipeline.
