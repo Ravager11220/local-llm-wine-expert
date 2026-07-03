@@ -2,7 +2,7 @@ async function sendData() {
     const userPrompt = document.getElementById('textBox').value;
     const promptBox=document.getElementById('textBox');
     console.log(userPrompt);
-    promptBox.innerText="";
+    promptBox.value="";
     const replybox = document.getElementById('replyBox');
     replybox.innerText = "";
     replybox.classList.add('responding');
