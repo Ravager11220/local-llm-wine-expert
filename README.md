@@ -1,15 +1,15 @@
 ### deployed: https://local-llm-wine-expert.vercel.app/
 # Local LLM Wine Expert
 
-A full-stack, decoupled local AI application that connects a native browser interface to a self-hosted neural network. The system delivers responsive, highly opinionated, and playful wine advice using a localized inference pipeline.
+A full-stack, decoupled local AI application that connects a native browser interface to a self-hosted local llm. The system delivers  playful wine advice using a local llm.
 <img width="1919" height="925" alt="image" src="https://github.com/user-attachments/assets/a9bb7067-3ba8-4fb9-86e7-2c720d401773" />
 
 ## Engineering Highlight: Zero-Framework, Zero-Dependency Implementation
 
 Every single line of this project—across the entire stack—was written by hand.
 
-* **Frontend:** Built entirely using native HTML5, vanilla CSS3, and raw JavaScript without reliance on React, Tailwind, or external UI libraries. This ensures an exceptionally lightweight footprint with zero third-party client dependencies.
-* **Backend:** Built directly on top of the native Python ASGI ecosystem using FastAPI and Uvicorn to manage asynchronous execution and data streaming.
+* **Frontend:** Built entirely using native HTML5, vanilla CSS3, and raw JavaScript. This ensures a lightweight footprint with zero third-party client dependencies.
+* **Backend:** Built directly on top of the Python ecosystem using FastAPI and Uvicorn to manage asynchronous execution.
 
 ---
 
@@ -21,16 +21,16 @@ Transitioning from standard algorithmic C++ development to an asynchronous, mult
 
 Because JavaScript (browser client) and Python (server) run in isolated process memories and cannot share native objects, data is translated into a universal string format (JSON).
 
-* **Client Side:** Captures raw input from the DOM and utilizes `JSON.stringify()` to flatten active memory objects into transportable network payloads.
-* **Server Side:** Leverages Pydantic data models to intercept incoming payloads, enforcing a strict type contract to validate structural keys before mapping them into native Python attributes.
+* **Client Side:** Captures raw input from the DOM and utilizes `JSON.stringify()` to flatten active memory objects into transportable payloads.
+* **Server Side:** uses Pydantic data models to intercept incoming payloads, enforcing a strict type contract to validate structural keys before mapping them into Python attributes.
 
 ### 2. Cross-Origin Resource Sharing (CORS) Mitigation
 
-Browsers restrict scripts running on a local file system or a client-side origin from reading data from a distinct port. To allow communication with the backend on port 8000, explicit permissions were handled by injecting CORS middleware directly into the FastAPI application stack, appending the necessary access-control headers to outgoing HTTP responses.
+Browsers restrict scripts running on a local file system or a client-side origin from reading data from a distinct port. To allow communication with the backend on port 8000, explicit permissions were handled by injecting CORS middleware directly into the FastAPI application stack. Wildcard (*) was used, so if you plan on running it locally i recommend modifying it.
 
 ### 3. Asynchronous Execution Timelines
 
-Network I/O operations and model inference are inherently unpredictable. To prevent the single-threaded browser interface from freezing during computation, the system implements the `async/await` paradigm in JavaScript. This halts execution on the network thread until the TCP socket returns data, while cleanly manipulating DOM class lists to update the visual interface state dynamically.
+Network I/O operations and model inference are unpredictable. To prevent the single-threaded browser interface from freezing during computation, the system implements the `async/await` methods in JavaScript. This halts execution on the network thread until the TCP socket returns data, while cleanly manipulating DOM class lists to update the visual interface state.
 
 ---
 
@@ -94,4 +94,4 @@ local-llm-wine-expert/
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License, free to use.
