@@ -26,7 +26,7 @@ Because JavaScript (browser client) and Python (server) run in isolated process 
 
 ### 2. Cross-Origin Resource Sharing (CORS) Mitigation
 
-Browsers restrict scripts running on a local file system or a client-side origin from reading data from a distinct port. To allow communication with the backend on port 8000, explicit permissions were handled by injecting CORS middleware directly into the FastAPI application stack. Wildcard (*) was used, so if you plan on running it locally i recommend modifying it.
+Browsers restrict scripts running on a local file system or a client-side origin from reading data from a distinct port. To allow communication with the backend on port 8000, explicit permissions were handled by injecting CORS middleware directly into the FastAPI application stack. Wildcard (*) was used, so if you plan on running it locally i recommend modifying it. This could a huge cybersecurity risk, until you modify the middleware to accept on certain domains and methods etc.
 
 ### 3. Asynchronous Execution Timelines
 
